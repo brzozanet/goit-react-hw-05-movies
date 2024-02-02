@@ -1,7 +1,10 @@
+import { TrendingToday } from "../../components/TrendingToday/TrendingToday";
+
 export function Home() {
   return (
     <>
-      <h1>Hello Home!</h1>
+      <h2>Hello Home!</h2>
+      <TrendingToday />
     </>
   );
 }
