@@ -1,35 +1,20 @@
+// import React from "react";
 import ReactDOM from "react-dom/client";
-import { Home } from "./pages/Home.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Home } from "./pages/Home/Home";
 import { Movies } from "./pages/Movies/Movies";
-import { RootLayout } from "./layouts/RootLayout/RootLayout";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-  Route,
-} from "react-router-dom";
 import "./index.css";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/">
-      <Route index element={<RootLayout />} />
-      <Route path="/" element={<Home />} />
-      <Route path="/movies" element={<Movies />} />
-    </Route>
-  )
-);
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Home />,
-//   },
-//   {
-//     path: "/movies",
-//     element: <Movies />,
-//   },
-// ]);
+const router = createBrowserRouter([
+  {
+    element: <Home />,
+    path: "/",
+  },
+  {
+    element: <Movies />,
+    path: "/movies",
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
