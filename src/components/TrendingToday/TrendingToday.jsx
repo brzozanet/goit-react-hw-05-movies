@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Loader } from "../Loader/Loader";
+import { MoviesList } from "../MoviesList/MoviesList";
 
 export function TrendingToday() {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -20,16 +21,19 @@ export function TrendingToday() {
       options
     )
       .then((response) => response.json())
-      .then((movieData) => setTrendingMovies(movieData))
+      .then((response) => {
+        setTrendingMovies(response.results);
+        setIsLoading(false);
+      })
       .catch((error) => console.error(error));
-
-    console.log(trendingMovies);
   }, []);
+
+  console.log("state: ", trendingMovies);
 
   return (
     <>
-      <h1>Trending today</h1>
-      <Loader />
+      <h1>Trending today </h1>
+      {isLoading ? <Loader /> : <MoviesList movies={trendingMovies} />}
     </>
   );
 }
