@@ -26,9 +26,6 @@ export function MovieDetails() {
       .catch((error) => console.error(error));
   }, [movieId]);
 
-  console.log("movieID: ", movieId);
-  console.log("state: ", movie);
-
   return (
     <>
       <h1>{movie.title}</h1>

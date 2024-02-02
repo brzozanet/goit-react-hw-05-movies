@@ -28,8 +28,6 @@ export function TrendingToday() {
       .catch((error) => console.error(error));
   }, []);
 
-  console.log("state: ", trendingMovies);
-
   return (
     <>
       <h1>Trending today </h1>
