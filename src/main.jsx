@@ -23,14 +23,14 @@ const router = createBrowserRouter([
       </RootLayout>
     ),
     path: "/movies",
-    children: {
-      element: (
-        <RootLayout>
-          <Movie />
-        </RootLayout>
-      ),
-      path: "/movies/:movieID",
-    },
+    // children: {
+    //   element: (
+    //     <RootLayout>
+    //       <Movie />
+    //     </RootLayout>
+    //   ),
+    //   path: "/movies/:movieID",
+    // },
   },
 ]);
 
