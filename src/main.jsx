@@ -6,6 +6,7 @@ import { Movies } from "./pages/Movies/Movies";
 import { MovieDetails } from "./pages/MovieDetails/MovieDetails";
 import { RootLayout } from "./layouts/RootLayout";
 import { Cast } from "./components/Cast/Cast";
+import { Reviews } from "./components/Reviews/Reviews";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         element: <Cast />,
         path: "cast",
+      },
+      {
+        element: <Reviews />,
+        path: "reviews",
       },
     ],
   },

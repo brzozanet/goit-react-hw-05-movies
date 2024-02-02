@@ -41,6 +41,8 @@ export function MovieDetails() {
       <p>Release date: {movieDetails.release_date}</p>
       <p>User score: {movieDetails.vote_average}</p>
       <Link to={"cast"}>Cast</Link>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <Link to={"reviews"}>Reviews</Link>
       <Outlet />
     </>
   );

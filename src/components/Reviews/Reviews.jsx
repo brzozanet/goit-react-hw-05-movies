@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-export function Cast() {
-  const [movieCredits, setMovieCredits] = useState([]);
+export function Reviews() {
+  const [movieReviews, setMovieReviews] = useState([]);
   const { movieId } = useParams();
 
   const options = {
@@ -16,30 +16,24 @@ export function Cast() {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`,
+      `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`,
       options
     )
       .then((response) => response.json())
       .then((response) => {
-        setMovieCredits(response.cast);
+        setMovieReviews(response.results);
       })
       .catch((error) => console.error(error));
   }, [movieId]);
 
   return (
     <>
-      <h2>Cast</h2>
+      <h2>Reviews</h2>
       <ul>
-        {movieCredits.map((credit) => (
-          <li key={credit.id}>
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${credit.profile_path}`}
-              alt={credit.name}
-              title={credit.name}
-              width="150"
-            />
-            <p>{credit.name}</p>
-            <p>Character: {credit.character}</p>
+        {movieReviews.map((review) => (
+          <li key={review.id}>
+            <p>{review.author}</p>
+            <p>{review.content}</p>
           </li>
         ))}
       </ul>
