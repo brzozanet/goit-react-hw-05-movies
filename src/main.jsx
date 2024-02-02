@@ -5,6 +5,7 @@ import { Home } from "./pages/Home/Home";
 import { Movies } from "./pages/Movies/Movies";
 import { MovieDetails } from "./pages/MovieDetails/MovieDetails";
 import { RootLayout } from "./layouts/RootLayout";
+import { Cast } from "./components/Cast/Cast";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -31,6 +32,12 @@ const router = createBrowserRouter([
       </RootLayout>
     ),
     path: "/movies/:movieId",
+    children: [
+      {
+        element: <Cast />,
+        path: "cast",
+      },
+    ],
   },
 ]);
 

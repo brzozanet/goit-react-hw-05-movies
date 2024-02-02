@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 
 export function MovieDetails() {
   const [movie, setMovie] = useState({});
@@ -40,6 +40,8 @@ export function MovieDetails() {
       <p>{movie.overview}</p>
       <p>Release date: {movie.release_date}</p>
       <p>User score: {movie.vote_average}</p>
+      <Link to={"cast"}>Cast</Link>
+      <Outlet />
     </>
   );
 }
