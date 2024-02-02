@@ -4,14 +4,23 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home } from "./pages/Home/Home";
 import { Movies } from "./pages/Movies/Movies";
 import "./index.css";
+import { RootLayout } from "./layouts/RootLayout";
 
 const router = createBrowserRouter([
   {
-    element: <Home />,
+    element: (
+      <RootLayout>
+        <Home />
+      </RootLayout>
+    ),
     path: "/",
   },
   {
-    element: <Movies />,
+    element: (
+      <RootLayout>
+        <Movies />
+      </RootLayout>
+    ),
     path: "/movies",
   },
 ]);

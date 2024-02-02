@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 export function MoviesList({ movies }) {
   return (
     <>
-      <h2>Hello MoviesList!</h2>
       <ul className={css.movies_list}>
         {movies.map((movie) => {
           return (
