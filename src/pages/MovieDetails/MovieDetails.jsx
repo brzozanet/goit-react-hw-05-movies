@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
 
 export function MovieDetails() {
-  const [movie, setMovie] = useState({});
+  const [movieDetails, setMovieDetails] = useState({});
   const { movieId } = useParams();
 
   const options = {
@@ -21,25 +21,25 @@ export function MovieDetails() {
     )
       .then((response) => response.json())
       .then((response) => {
-        setMovie(response);
+        setMovieDetails(response);
       })
       .catch((error) => console.error(error));
   }, [movieId]);
 
   return (
     <>
-      <h1>{movie.title}</h1>
-      <p>{movie.tagline}</p>
+      <h1>{movieDetails.title}</h1>
+      <p>{movieDetails.tagline}</p>
       <img
-        src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
-        alt={movie.title}
-        title={movie.title}
+        src={`https://image.tmdb.org/t/p/w500/${movieDetails.backdrop_path}`}
+        alt={movieDetails.title}
+        title={movieDetails.title}
         width="500"
       />
       <h3>Overview</h3>
-      <p>{movie.overview}</p>
-      <p>Release date: {movie.release_date}</p>
-      <p>User score: {movie.vote_average}</p>
+      <p>{movieDetails.overview}</p>
+      <p>Release date: {movieDetails.release_date}</p>
+      <p>User score: {movieDetails.vote_average}</p>
       <Link to={"cast"}>Cast</Link>
       <Outlet />
     </>
