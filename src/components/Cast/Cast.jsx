@@ -26,8 +26,6 @@ export function Cast() {
       .catch((error) => console.error(error));
   }, [movieId]);
 
-  console.log("movieCredits: ", movieCredits);
-
   return (
     <>
       <h2>Cast</h2>
