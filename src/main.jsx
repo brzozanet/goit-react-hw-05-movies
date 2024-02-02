@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home } from "./pages/Home/Home";
 import { Movies } from "./pages/Movies/Movies";
+import { Movie } from "./pages/Movie/Movie";
 import "./index.css";
 import { RootLayout } from "./layouts/RootLayout";
 
@@ -22,6 +23,14 @@ const router = createBrowserRouter([
       </RootLayout>
     ),
     path: "/movies",
+    children: {
+      element: (
+        <RootLayout>
+          <Movie />
+        </RootLayout>
+      ),
+      path: "/movies/:movieID",
+    },
   },
 ]);
 
