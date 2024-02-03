@@ -1,3 +1,4 @@
+import css from "./TrendingToday.module.css";
 import { useState, useEffect } from "react";
 import { Loader } from "../Loader/Loader";
 import { MoviesList } from "../MoviesList/MoviesList";
@@ -30,7 +31,7 @@ export function TrendingToday() {
 
   return (
     <>
-      <h1>Trending today </h1>
+      <h1 className={css.title}>Trending today </h1>
       {isLoading ? <Loader /> : <MoviesList movies={trendingMovies} />}
     </>
   );

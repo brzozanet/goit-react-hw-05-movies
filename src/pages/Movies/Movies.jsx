@@ -3,7 +3,7 @@ import { SearchBox } from "../../components/SearchBox/SearchBox";
 import { Loader } from "../../components/Loader/Loader";
 import { MoviesList } from "../../components/MoviesList/MoviesList";
 
-export function Movies() {
+export default function Movies() {
   const [query, setQuery] = useState("");
   const [searchMovies, setSearchMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

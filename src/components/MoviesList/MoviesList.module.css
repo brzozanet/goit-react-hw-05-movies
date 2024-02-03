@@ -1,11 +1,13 @@
-.moviebox {
+.movie_box {
   border: 1px solid orange;
+  background-color: antiquewhite;
   max-width: 400px;
-  padding: 20px;
 }
 
-.movies.list {
+.movies_list {
   display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 
 .movies_item {
@@ -13,7 +15,13 @@
   display: flex;
   flex-direction: row;
 }
-.title {
-  font-size: 26px;
+
+.movie_link {
+  text-decoration: none;
+}
+
+.movie_title {
+  font-size: 16px;
+  color: black;
   text-align: center;
 }

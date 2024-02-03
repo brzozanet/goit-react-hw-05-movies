@@ -1,6 +1,6 @@
 import { TrendingToday } from "../../components/TrendingToday/TrendingToday";
 
-export function Home() {
+export default function Home() {
   return (
     <>
       <TrendingToday />

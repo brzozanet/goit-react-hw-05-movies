@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
 
-export function MovieDetails() {
+export default function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
   const { movieId } = useParams();
 
