@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MovieItem } from "../MovieItem/MovieItem";
+// import { MovieItem } from "../MovieItem/MovieItem";
 import css from "./MoviesList.module.css";
 import PropTypes from "prop-types";
 
@@ -25,7 +25,7 @@ export function MoviesList({ movies }) {
           );
         })}
       </ul>
-      <MovieItem movies={movies} />
+      {/* <MovieItem movies={movies} /> */}
     </>
   );
 }

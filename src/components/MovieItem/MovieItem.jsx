@@ -1,7 +1,7 @@
 export function MovieItem() {
   return (
     <>
-      <h2>Hello MovieItem!</h2>
+      <h2>MovieItem component</h2>
     </>
   );
 }
