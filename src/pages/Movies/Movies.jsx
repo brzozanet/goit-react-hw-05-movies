@@ -1,3 +1,4 @@
+import css from "./Movies.module.css";
 import { useState, useEffect } from "react";
 import { SearchBox } from "../../components/SearchBox/SearchBox";
 import { Loader } from "../../components/Loader/Loader";
@@ -36,9 +37,15 @@ export default function Movies() {
 
   return (
     <>
-      <h1>Search movies</h1>
-      <SearchBox handleSearch={handleSearch} />
-      {isLoading ? <Loader /> : <MoviesList movies={searchMovies} />}
+      <div className={css.movie_container}>
+        <h1 className={css.movie_title}>Search movies</h1>
+        {searchMovies.length === 0 ? (
+          <SearchBox handleSearch={handleSearch} />
+        ) : (
+          ""
+        )}
+        {isLoading ? <Loader /> : <MoviesList movies={searchMovies} />}
+      </div>
     </>
   );
 }

@@ -1,3 +1,4 @@
+import css from "./Cast.module.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -28,21 +29,25 @@ export default function Cast() {
 
   return (
     <>
-      <h2>Cast</h2>
-      <ul>
-        {movieCredits.map((credit) => (
-          <li key={credit.id}>
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${credit.profile_path}`}
-              alt={credit.name}
-              title={credit.name}
-              width="150"
-            />
-            <p>{credit.name}</p>
-            <p>Character: {credit.character}</p>
-          </li>
-        ))}
-      </ul>
+      <div className={css.cast_container}>
+        <ul className={css.cast_list}>
+          {movieCredits.map((credit) => (
+            <li key={credit.id} className={css.cast_item}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${credit.profile_path}`}
+                className={css.cast_image}
+                alt={credit.name}
+                title={credit.name}
+                width="160"
+              />
+              <p className={css.cast_title}>{credit.name}</p>
+              <p className={css.cast_character}>
+                Character: {credit.character}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

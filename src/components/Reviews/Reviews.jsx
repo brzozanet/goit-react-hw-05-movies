@@ -1,3 +1,4 @@
+import css from "./Reviews.module.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -28,12 +29,11 @@ export default function Reviews() {
 
   return (
     <>
-      <h2>Reviews</h2>
-      <ul>
+      <ul className={css.review_list}>
         {movieReviews.map((review) => (
-          <li key={review.id}>
-            <p>{review.author}</p>
-            <p>{review.content}</p>
+          <li key={review.id} className={css.review_item}>
+            <p className={css.review_author}>{review.author}:</p>
+            <p className={css.review_content}>{review.content}</p>
           </li>
         ))}
       </ul>
