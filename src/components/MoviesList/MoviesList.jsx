@@ -9,7 +9,7 @@ export function MoviesList({ movies }) {
         {movies.map((movie) => {
           return (
             <Link
-              to={`movies/${movie.id}`}
+              to={`/movies/${movie.id}`}
               key={movie.id}
               className={css.movie_link}
             >
