@@ -1,6 +1,7 @@
-import { lazy } from "react";
-import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React, { Suspense, lazy } from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Loader } from "./components/Loader/Loader";
 import { RootLayout } from "./layouts/RootLayout";
 import "./index.css";
 
@@ -10,51 +11,21 @@ const MovieDetails = lazy(() => import("./pages/MovieDetails/MovieDetails"));
 const Cast = lazy(() => import("./components/Cast/Cast"));
 const Reviews = lazy(() => import("./components/Reviews/Reviews"));
 
-const router = createBrowserRouter([
-  {
-    element: (
-      <RootLayout>
-        <Home />
-      </RootLayout>
-    ),
-    path: "/",
-  },
-  {
-    element: (
-      <RootLayout>
-        <Movies />
-      </RootLayout>
-    ),
-    path: "/movies",
-  },
-  {
-    element: (
-      <RootLayout>
-        <MovieDetails />
-      </RootLayout>
-    ),
-    path: "/movies/:movieId",
-    children: [
-      {
-        element: <Cast />,
-        path: "cast",
-      },
-      {
-        element: <Reviews />,
-        path: "reviews",
-      },
-    ],
-  },
-  {
-    element: (
-      <RootLayout>
-        <Home />
-      </RootLayout>
-    ),
-    path: "*",
-  },
-]);
-
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} basename="/goit-react-hw-05-movies/" />
+  <React.StrictMode>
+    <Router basename="/goit-react-hw-05-movies/">
+      <RootLayout>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/movies/:movieId" element={<MovieDetails />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </RootLayout>
+    </Router>
+  </React.StrictMode>
 );
