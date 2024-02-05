@@ -1,11 +1,15 @@
 import css from "./RootLayout.module.css";
-import { Suspense } from "react";
+import clsx from "clsx";
+import { Suspense, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Loader } from "../components/Loader/Loader";
 import PropTypes from "prop-types";
 import tmdbLogo from "../images/tmdb-logo-3-cropped.png";
 
 export function RootLayout({ children }) {
+  const [isHoverHome, setIsHoverHome] = useState(false);
+  const [isHoverMovies, setIsHoverMovies] = useState(false);
+
   return (
     <>
       <Suspense fallback={<Loader />}>
@@ -15,12 +19,26 @@ export function RootLayout({ children }) {
           </NavLink>
           <ul className={css.menu_list}>
             <li className={css.menu_item}>
-              <NavLink className={css.menu_title} to="/">
+              <NavLink
+                className={clsx(css.menu_title, {
+                  [css["is-hover"]]: isHoverHome,
+                })}
+                onMouseOver={() => setIsHoverHome(true)}
+                onMouseLeave={() => setIsHoverHome(false)}
+                to="/"
+              >
                 Home
               </NavLink>
             </li>
             <li className={css.menu_item}>
-              <NavLink className={css.menu_title} to="/movies">
+              <NavLink
+                className={clsx(css.menu_title, {
+                  [css["is-hover"]]: isHoverMovies,
+                })}
+                onMouseOver={() => setIsHoverMovies(true)}
+                onMouseLeave={() => setIsHoverMovies(false)}
+                to="/movies"
+              >
                 Movies
               </NavLink>
             </li>
