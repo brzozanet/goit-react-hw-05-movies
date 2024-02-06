@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Loader } from "./components/Loader/Loader";
 import { RootLayout } from "./layouts/RootLayout";
+import { HashRouter } from "react-router-dom";
 import "./index.css";
 
 const Home = lazy(() => import("./pages/Home/Home"));
@@ -12,18 +13,20 @@ const Cast = lazy(() => import("./components/Cast/Cast"));
 const Reviews = lazy(() => import("./components/Reviews/Reviews"));
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Router basename="/goit-react-hw-05-movies/">
-    <RootLayout>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:movieId" element={<MovieDetails />}>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Route>
-        </Routes>
-      </Suspense>
-    </RootLayout>
-  </Router>
+  <HashRouter>
+    <Router basename="/goit-react-hw-05-movies/">
+      <RootLayout>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/movies/:movieId" element={<MovieDetails />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </RootLayout>
+    </Router>
+  </HashRouter>
 );
